@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoltFix - Elektroinštalácie</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #d6e9ff 0%, #b8d8ff 100%);
+      margin: 0;
+      color: #333;
+      background-attachment: fixed;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+    }
+    header img {
+      max-height: 140px;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #005fcb;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 30px;
+      max-width: 800px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 1.8em;
+      text-align: center;
+      margin-top: 0;
+      color: #005fcb;
+    }
+    h2 {
+      color: #005fcb;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    form input[type="text"], form input[type="email"], form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    form .contact-options {
+      margin-top: 10px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    form .contact-options label {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    form button {
+      margin-top: 15px;
+      background: #005fcb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #004bb5;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="voltfix.jpg" alt="VoltFix logo" />
+    <nav>
+      <a href="#" onclick="showSection('home')">Domov</a>
+      <a href="#" onclick="showSection('projekty')">Projekty</a>
+      <a href="#" onclick="showSection('galeria')">Galéria</a>
+      <a href="#" onclick="showSection('kontakt')">Kontakt</a>
+    </nav>
+  </header>
+  <main>
+    <section id="home">
+      <h1>VoltFix – Profesionálne elektroinštalácie</h1>
+      <h2>Naše služby</h2>
+      <ul>
+        <li>Montáž a výmena zásuviek a vypínačov</li>
+        <li>Inštalácia svietidiel a LED pásov</li>
+        <li>Zapájanie varných dosiek a kuchynských spotrebičov</li>
+        <li>Montáž a zapojenie nabíjačiek pre elektroautá</li>
+        <li>Elektroinštalácie na mieru podľa vašich potrieb</li>
+        <li>Moderné a ekologické riešenia osvetlenia</li>
+        <li>Pomoc s ďalšími problémami podľa dohody</li>
+      </ul>
+    </section>
+
+    <section id="projekty" class="hidden">
+      <h2>Projekty</h2>
+      <p>Pripravuje sa...</p>
+    </section>
+
+    <section id="galeria" class="hidden">
+      <h2>Galéria</h2>
+      <p>Pripravuje sa...</p>
+    </section>
+
+    <section id="kontakt" class="hidden">
+      <h2>Kontaktujte nás</h2>
+      <p>Máte záujem o naše služby? Vyplňte krátky formulár a my sa vám ozveme.</p>
+      <form action="https://formspree.io/f/mqaqkppe" method="POST">
+        <label for="meno">Meno a priezvisko:</label>
+        <input type="text" id="meno" name="meno" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="sprava">Správa / Čo potrebujete zapojiť:</label>
+        <textarea id="sprava" name="sprava" rows="5" required></textarea>
+
+        <div class="contact-options">
+          <span>Preferovaný spôsob kontaktu:</span>
+          <label><input type="checkbox" name="contact_method" value="Telefonicky" /> Telefonicky</label>
+          <label><input type="checkbox" name="contact_method" value="Emailom" /> Emailom</label>
+        </div>
+
+        <button type="submit">Odoslať</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 VoltFix – Všetky práva vyhradené
+  </footer>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll("main > section");
+      sections.forEach(sec => sec.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
