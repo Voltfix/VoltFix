@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -80,6 +81,7 @@
       display: flex;
       gap: 20px;
       align-items: center;
+      flex-wrap: wrap;
     }
     form .contact-options label {
       margin: 0;
@@ -101,6 +103,47 @@
     }
     .hidden {
       display: none;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
+      header img {
+        max-height: 80px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      nav a {
+        margin: 5px 10px;
+        font-size: 0.95rem;
+      }
+      main {
+        padding: 15px;
+        margin: 10px auto;
+      }
+      h1 {
+        font-size: 1.4em;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      form input[type="text"], form input[type="email"], form textarea {
+        font-size: 1rem;
+        padding: 8px;
+      }
+      form button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -128,36 +171,29 @@
         <li>Pomoc s ďalšími problémami podľa dohody</li>
       </ul>
     </section>
-
     <section id="projekty" class="hidden">
       <h2>Projekty</h2>
       <p>Pripravuje sa...</p>
     </section>
-
     <section id="galeria" class="hidden">
       <h2>Galéria</h2>
       <p>Pripravuje sa...</p>
     </section>
-
     <section id="kontakt" class="hidden">
       <h2>Kontaktujte nás</h2>
       <p>Máte záujem o naše služby? Vyplňte krátky formulár a my sa vám ozveme.</p>
       <form action="https://formspree.io/f/mqaqkppe" method="POST">
         <label for="meno">Meno a priezvisko:</label>
         <input type="text" id="meno" name="meno" required />
-
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required />
-
         <label for="sprava">Správa / Čo potrebujete zapojiť:</label>
         <textarea id="sprava" name="sprava" rows="5" required></textarea>
-
         <div class="contact-options">
           <span>Preferovaný spôsob kontaktu:</span>
           <label><input type="checkbox" name="contact_method" value="Telefonicky" /> Telefonicky</label>
           <label><input type="checkbox" name="contact_method" value="Emailom" /> Emailom</label>
         </div>
-
         <button type="submit">Odoslať</button>
       </form>
     </section>
@@ -165,7 +201,6 @@
   <footer>
     &copy; 2025 VoltFix – Všetky práva vyhradené
   </footer>
-
   <script>
     function showSection(id) {
       const sections = document.querySelectorAll("main > section");
