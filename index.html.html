@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoltFix – Electrical Services</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8fbff 0%, #d6e9ff 100%);
+      margin: 0;
+      color: #333;
+      background-attachment: fixed;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header img {
+      max-height: 100px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #005fcb;
+      font-size: 1rem;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #005fcb;
+      left: 0;
+      bottom: -3px;
+      transition: 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .lang-switch {
+      margin-left: 30px;
+      font-size: 0.95rem;
+    }
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(10px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 0;
+      color: #005fcb;
+    }
+    h2 {
+      color: #005fcb;
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    form input[type="text"], form input[type="email"], form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    form button {
+      margin-top: 15px;
+      background: #005fcb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #004bb5;
+    }
+    .hidden {
+      display: none;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+      header img {
+        max-height: 70px;
+      }
+      nav {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav a {
+        margin: 5px 10px;
+      }
+      .lang-switch {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="voltfix.png" alt="VoltFix logo" />
+    <nav>
+      <a href="#" onclick="showSection('home')" data-key="nav-home">Home</a>
+      <a href="#" onclick="showSection('projects')" data-key="nav-projects">Projects</a>
+      <a href="#" onclick="showSection('gallery')" data-key="nav-gallery">Gallery</a>
+      <a href="#" onclick="showSection('contact')" data-key="nav-contact">Contact</a>
+      <div class="lang-switch">
+        <a href="#" onclick="switchLang('en')">EN</a> | <a href="#" onclick="switchLang('sk')">SK</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="home">
+      <h1 data-key="title">VoltFix – Professional Electrical Installations</h1>
+      <h2 data-key="services-title">Our Services</h2>
+      <ul>
+        <li data-key="s1">Installation and replacement of sockets and switches</li>
+        <li data-key="s2">Lighting and LED strip installation</li>
+        <li data-key="s3">Connecting cooktops and kitchen appliances</li>
+        <li data-key="s4">EV charger installation</li>
+        <li data-key="s5">Custom electrical solutions</li>
+        <li data-key="s6">Modern and eco-friendly lighting</li>
+        <li data-key="s7">Other works by agreement</li>
+      </ul>
+    </section>
+    <section id="projects" class="hidden">
+      <h2 data-key="projects-title">Projects</h2>
+      <p data-key="projects-text">Coming soon...</p>
+    </section>
+    <section id="gallery" class="hidden">
+      <h2 data-key="gallery-title">Gallery</h2>
+      <p data-key="gallery-text">Coming soon...</p>
+    </section>
+    <section id="contact" class="hidden">
+      <h2 data-key="contact-title">Contact Us</h2>
+      <p data-key="contact-text">Need our services? Fill out the short form and we'll get back to you.</p>
+      <form action="https://formspree.io/f/mqaqkppe" method="POST">
+        <label for="name" data-key="label-name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email" data-key="label-email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message" data-key="label-message">Message / What you need installed:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit" data-key="btn-send">Send</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 VoltFix – All rights reserved
+  </footer>
+  <script>
+    const translations = {
+      en: {
+        'nav-home': 'Home',
+        'nav-projects': 'Projects',
+        'nav-gallery': 'Gallery',
+        'nav-contact': 'Contact',
+        'title': 'VoltFix – Professional Electrical Installations',
+        'services-title': 'Our Services',
+        's1': 'Installation and replacement of sockets and switches',
+        's2': 'Lighting and LED strip installation',
+        's3': 'Connecting cooktops and kitchen appliances',
+        's4': 'EV charger installation',
+        's5': 'Custom electrical solutions',
+        's6': 'Modern and eco-friendly lighting',
+        's7': 'Other works by agreement',
+        'projects-title': 'Projects',
+        'projects-text': 'Coming soon...',
+        'gallery-title': 'Gallery',
+        'gallery-text': 'Coming soon...',
+        'contact-title': 'Contact Us',
+        'contact-text': "Need our services? Fill out the short form and we'll get back to you.",
+        'label-name': 'Full Name:',
+        'label-email': 'Email:',
+        'label-message': 'Message / What you need installed:',
+        'btn-send': 'Send'
+      },
+      sk: {
+        'nav-home': 'Domov',
+        'nav-projects': 'Projekty',
+        'nav-gallery': 'Galéria',
+        'nav-contact': 'Kontakt',
+        'title': 'VoltFix – Profesionálne elektroinštalácie',
+        'services-title': 'Naše služby',
+        's1': 'Montáž a výmena zásuviek a vypínačov',
+        's2': 'Inštalácia svietidiel a LED pásov',
+        's3': 'Zapájanie varných dosiek a kuchynských spotrebičov',
+        's4': 'Montáž a zapojenie nabíjačiek pre elektroautá',
+        's5': 'Elektroinštalácie na mieru podľa vašich potrieb',
+        's6': 'Moderné a ekologické riešenia osvetlenia',
+        's7': 'Pomoc s ďalšími problémami podľa dohody',
+        'projects-title': 'Projekty',
+        'projects-text': 'Pripravuje sa...',
+        'gallery-title': 'Galéria',
+        'gallery-text': 'Pripravuje sa...',
+        'contact-title': 'Kontaktujte nás',
+        'contact-text': 'Máte záujem o naše služby? Vyplňte krátky formulár a my sa vám ozveme.',
+        'label-name': 'Meno a priezvisko:',
+        'label-email': 'E-mail:',
+        'label-message': 'Správa / Čo potrebujete zapojiť:',
+        'btn-send': 'Odoslať'
+      }
+    };
+
+    function switchLang(lang) {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        el.textContent = translations[lang][el.getAttribute('data-key')];
+      });
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    // Default language EN
+    switchLang('en');
+  </script>
+</body>
+</html>
